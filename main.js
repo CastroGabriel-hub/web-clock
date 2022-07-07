@@ -29,7 +29,7 @@ function buildClock(){
 
 function showTime(){
     
-    var date = new Date();
+    let date = new Date();
 
     titleSection.innerText = 'Today is ' + date.toLocaleString('default', { month: 'long' }) + ' ' + date.getDate() + ' of ' + date.getFullYear();
     hoursSection.innerText = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
@@ -42,28 +42,69 @@ function buildStop(){
     clear();
     stopBtn.setAttribute('class', 'selected');
 
+    var seconds = document.createElement('p');
+    var minutes = document.createElement('p');
+    var hours = document.createElement('p');
     const watch = document.createElement('h1');
     const btnDiv = document.createElement('div');
     const start = document.createElement('button');
     const stop = document.createElement('button');
+    const reset = document.createElement('button');
     
-    watch.innerText = '00:00:00';
+    seconds = 00;
+    minutes = 00;
+    hours = 00;
     start.innerText = 'start';
     stop.innerText = 'stop';
+    reset.innerText = 'reset';
 
     start.addEventListener('click', startWatch);
-    btnDiv.setAttribute('class', 'stopBtnDiv');
+    btnDiv.setAttribute('class', 'stopWatchBtnDiv');
 
+    watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
     btnDiv.append(stop);
     btnDiv.append(start);
+    btnDiv.append(reset);
     content.append(watch);
     content.append(btnDiv);
 
+    function startWatch(){
+        setInterval(function(){
+            seconds++;
+            if(seconds <= 9 ){
+                watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
+            }
+
+            if(seconds > 9){
+                watch.innerText = '0' + hours + ':0' + minutes + ':' + seconds;
+            }
+
+            if (seconds >= 60) {
+                minutes++;
+                seconds = 0;
+                watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
+            }
+
+            if(minutes > 9){
+                watch.innerText = '0' + hours + ':' + minutes + ':' + seconds;
+            }
+
+            if(minutes >= 60){
+                hours++;
+                minutes = 0;
+                watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
+            }
+
+            if(hours > 9){
+                watch.innerText = hours + ':' + minutes + ':' + seconds;
+            }
+
+        }, 1000)
+    
+    }
 }
 
-function startWatch(){
 
-}
 
 //Timer functions
 function buildTimer(){
