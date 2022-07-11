@@ -42,19 +42,15 @@ function buildStop(){
     clear();
     stopBtn.setAttribute('class', 'selected');
 
-    var seconds = document.createElement('p');
-    var minutes = document.createElement('p');
-    var hours = document.createElement('p');
+    let seconds = 00;
+    let minutes = 00;
+    let hours = 00;
     const watch = document.createElement('h1');
     const btnDiv = document.createElement('div');
     const start = document.createElement('button');
     const stop = document.createElement('button');
     const reset = document.createElement('button');
 
-    
-    seconds = 00;
-    minutes = 00;
-    hours = 00;
     start.innerText = 'start';
     stop.innerText = 'stop';
     reset.innerText = 'reset';
@@ -104,7 +100,7 @@ function buildStop(){
         }, 1000)
 
         stop.addEventListener('click', () => { //putting this listener here the function 
-            clearInterval(interval);            //will recognize properli the interval
+            clearInterval(interval);            //will recognize properly the interval
         });
 
         reset.addEventListener('click', () => {
