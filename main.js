@@ -50,6 +50,7 @@ function buildStop(){
     const start = document.createElement('button');
     const stop = document.createElement('button');
     const reset = document.createElement('button');
+
     
     seconds = 00;
     minutes = 00;
@@ -59,6 +60,7 @@ function buildStop(){
     reset.innerText = 'reset';
 
     start.addEventListener('click', startWatch);
+
     btnDiv.setAttribute('class', 'stopWatchBtnDiv');
 
     watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
@@ -69,7 +71,7 @@ function buildStop(){
     content.append(btnDiv);
 
     function startWatch(){
-        setInterval(function(){
+        var interval = setInterval(function(){
             seconds++;
             if(seconds <= 9 ){
                 watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
@@ -100,11 +102,20 @@ function buildStop(){
             }
 
         }, 1000)
-    
+
+        stop.addEventListener('click', () => { //putting this listener here the function 
+            clearInterval(interval);            //will recognize properli the interval
+        });
+
+        reset.addEventListener('click', () => {
+            clearInterval(interval);
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            watch.innerText = '0' + hours + ':0' + minutes + ':0' + seconds;
+        })
     }
 }
-
-
 
 //Timer functions
 function buildTimer(){
@@ -121,6 +132,5 @@ function clear(){
 
     while(content.lastChild){
         content.removeChild(content.lastChild);
-        console.log('removed');
     }
 }
