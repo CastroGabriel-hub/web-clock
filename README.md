@@ -2,5 +2,6 @@
 
 A single page application that allows you to check the current time and use another features like a stopwatch and a timer.
 
-![web-clock01](https://user-images.githubusercontent.com/74190963/177215907-824cadc2-39e9-49db-a912-0f9a6f0ff800.png)
-![web-clock02](https://user-images.githubusercontent.com/74190963/177215910-1dc58aea-9a52-48f2-9606-65632392259c.png)
+![webClock01](https://user-images.githubusercontent.com/74190963/178611759-bc21cb98-821d-4622-8970-5fa024c7a508.png)
+![webClock02](https://user-images.githubusercontent.com/74190963/178611762-79fd4179-6c73-4d70-b937-be1adabd316d.png)
+
